@@ -25,7 +25,7 @@ for i in $(cat packages.lst);do
 	echo -e "\e[36m****************************************\e[0m" 
 	apt-get -y install -f $i
 done; 
-
+apt-get install linux-headers-`uname -r`
 gdebi bat_0.11.0_amd64.deb
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -41,17 +41,19 @@ echo -e "\e[36mInstalando Calibre\e[0m"
 
 wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
 
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 echo -e "Purgando Paquetes"
 apt-get -y upgrade
 apt-get -y dist-upgrade
 apt-get autoremove
 dpkg -i /home/daniel/Downloads/deb/*.deb
-echo -e "Creando enlaces simbolicos"
+#echo -e "Creando enlaces simbolicos"
 #rm -rf /home/daniel/Downloads /home/daniel/Documents /home/daniel/Pictures 
 #ln -s /data/Documentos /home/daniel/Documents
 #ln -s /data/Descargas /home/daniel/Downloads
 #ln -s /data/home/Pictures /home/daniel/Pictures
 #ln -s /data/.ssh /home/daniel/.ssh
 #ln -s /opt/Android /home/daniel/Android
-cp /data/home/.tmux /home/daniel
+#cp /data/home/.tmux /home/daniel
 
