@@ -1,4 +1,8 @@
 #!/bin/bash
+dir=$(mktemp -d)
+cd $dir
+wget https://raw.githubusercontent.com/daniel2005d/InstallMachine/master/packages.txt
+
 if (( $EUID != 0 )); then
     echo -e "\e[31mEl comando se debe ejecutar como root\e[0m"
     exit
