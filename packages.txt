@@ -34,3 +34,6 @@ code
 automake
 bison
 gperf
+gettext
+gettext-devel
+texinfo
