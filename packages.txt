@@ -31,3 +31,6 @@ remmina
 rar
 xclip
 code
+automake
+bison
+gperf
