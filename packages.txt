@@ -37,3 +37,7 @@ gperf
 gettext
 gettext-devel
 texinfo
+python3-dateutil
+python-urllib3
+python-setuptools 
+python3-setuptools
