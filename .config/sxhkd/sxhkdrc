@@ -80,8 +80,11 @@ super + {o,i}
 	bspc node {older,newer} -f; \
 	bspc wm -h on
 
+#------------------
+# Se mueve entre escritorios
+#--------------------
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
+alt + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
