@@ -142,3 +142,7 @@ alt + ctrl + {Left,Down,Up,Right}
 #Firefox
 super + shift + g
         firefox
+
+#Lock Screen
+super + l 
+	i3lock-fancy
