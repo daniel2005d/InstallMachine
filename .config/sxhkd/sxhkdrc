@@ -96,7 +96,7 @@ alt + {_,shift + }{1-9,0}
 #--------------------------------
 # preselect the direction
 super + ctrl + alt + {Left,Up,Down,Right}
-	bspc node -p {west,south,north,east}
+	bspc node -p {west,north,south,east}
 
 # preselect the ratio
 super + ctrl + {1-9}
@@ -146,3 +146,8 @@ super + shift + g
 #Lock Screen
 super + l 
 	i3lock-fancy
+
+alt + F2
+	rofi -show run
+#super + shift + b
+#	gksudo /opt/BurpSuitePro/BurpSuitePro
