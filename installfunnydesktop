@@ -4,3 +4,5 @@ git clone https://github.com/baskerville/bspwm.git
 git clone https://github.com/baskerville/sxhkd.git
 cd bspwm && make && sudo make install
 cd ../sxhkd && make && sudo make install
+echo "sxhkd &" > ~/.xinitrc
+echo "bspwm" >> ~/.xinitrc
