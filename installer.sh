@@ -19,7 +19,7 @@ apt-get -y dist-upgrade
 wget https://github.com/sharkdp/bat/releases/download/v0.11.0/bat_0.11.0_amd64.deb 
 dpkg -i bat_0.11.0_amd64.deb
 
-for i in $(cat packages.lst);do 
+for i in $(cat packages.txt);do 
 	echo -e "\e[36m***********************************"
 	echo -e "Instalando ... --->\e[1m"  $i
 	echo -e "\e[36m****************************************\e[0m" 
