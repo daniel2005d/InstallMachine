@@ -41,3 +41,4 @@ python3-dateutil
 python-urllib3
 python-setuptools 
 python3-setuptools
+rofi
