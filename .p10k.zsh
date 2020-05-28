@@ -1425,6 +1425,23 @@
       p10k segment -f 208 -i '' -t $ip
   }
 
+function prompt_htbip(){
+
+
+    local htbip=$(/usr/sbin/ifconfig | grep -i 'tun0' | awk '{print $1}' | tr -d ':')
+    if [ "$htbip" = 'tun0' ]; then
+        local ip=$(/usr/sbin/ifconfig tun0 | grep -i inet -m1 | awk '{print $2}')
+        local icon=''
+    else
+        local ip=$(/usr/sbin/ifconfig eth0| grep -i inet -m1 | awk '{print $2}')
+        local icon=''
+    fi
+
+    p10k segment -t $ip -f 208
+    p10k segment -i $icon -f green
+
+}
+
 
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
