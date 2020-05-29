@@ -1435,6 +1435,10 @@ function prompt_htbip(){
     else
         local ip=$(/usr/sbin/ifconfig eth0| grep -i inet -m1 | awk '{print $2}')
         local icon=''
+         if [ "$ip" = "" ]; then
+               local ip=' '
+        fi
+
     fi
 
     p10k segment -t $ip -f 208
