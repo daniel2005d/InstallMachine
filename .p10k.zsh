@@ -1427,7 +1427,7 @@
 
 function prompt_htbip(){
 
-  local ip=' '
+
      local htbip=$(/usr/sbin/ifconfig | grep -i 'tun0' | awk '{print $1}' | tr -d ':')
      if [ "$htbip" = 'tun0' ]; then
          local ip=$(/usr/sbin/ifconfig tun0)# | grep -i inet -m1 #| awk '{print $2}')
