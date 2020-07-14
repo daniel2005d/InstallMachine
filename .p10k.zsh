@@ -1421,35 +1421,11 @@
 
   function prompt_justip() {
 
-      local ip=$(/usr/sbin/ifconfig 'enp2s0f1' | grep -m1 -i inet  | awk '{print $2}')
-      p10k segment -f 208 -i '' -t $ip
+      #local ip=$(/usr/sbin/ifconfig 'enp2s0f1' | grep -m1 -i inet  | awk '{print $2}')
+     #if [ -z "$ip" ]; then
+         #p10k segment -f 208 -i '' -t $ip
+    # fi
   }
-
-function prompt_htbip(){
-
-
-     local htbip=$(/usr/sbin/ifconfig | grep -i 'tun0' | awk '{print $1}' | tr -d ':')
-     if [ "$htbip" = 'tun0' ]; then
-         local ip=$(/usr/sbin/ifconfig tun0)# | grep -i inet -m1 #| awk '{print $2}')
-         if [ -z "$ip" ]; then
-             local icon=''
-         else
-             #local ip = ' '
-             local icon=''
-         fi
-     else
-         local ip=$(/usr/sbin/ifconfig eth0| grep -i inet -m1 | awk '{print $2}')
-         local icon=''
-          if [ "$ip" = "" ]; then
-                local ip=' '
-         fi
-
-     fi
-
-     p10k segment -t $ip -f 208
-     p10k segment -i $icon -f green
-
-}
 
 
 
