@@ -1418,14 +1418,18 @@
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
   }
+ function prompt_justip() {
 
-  function prompt_justip() {
+         local htbip=$(/usr/sbin/ifconfig 'tun0' 2>/dev/null | grep -m1 -i inet | awk '{print $2}')
+         local localip=$(/usr/sbin/ifconfig 'eth0' | grep -m1 -i inet | awk '{print $2}')
 
-      #local ip=$(/usr/sbin/ifconfig 'enp2s0f1' | grep -m1 -i inet  | awk '{print $2}')
-     #if [ -z "$ip" ]; then
-         #p10k segment -f 208 -i '' -t $ip
-    # fi
-  }
+          if [[ -n ${htbip} ]]; then
+                 p10k segment  -i '' -f '#9fef00' -t $htbip;
+          elif [[ -n ${localip} ]]; then
+                 p10k segment  -i 'ﳤ' -f '#f2ff00' -t $localip;
+          fi
+   }
+
 
 
 
