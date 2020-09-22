@@ -35,6 +35,7 @@
 #    vcs                     # git status
     #prompt_char             # prompt symbol
     context
+    virtualenv
   )
 
   # The list of segments shown on the right. Fill it with less important segments.
@@ -42,7 +43,7 @@
   # automatically hidden when the input line reaches it. Right prompt above the
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-justip
+     justip
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
@@ -754,13 +755,15 @@ justip
 
   ###[ virtualenv: python virtual environment (https://docs.python.org/3/library/venv.html) ]###
   # Python virtual environment color.
-  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=37
+  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND="red"
   # Don't show Python version next to the virtual environment name.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
   # Separate environment name from Python version only with a space.
-  typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
+  typeset -g POWERLEVEL9K_VIRTUALENV_LEFT_DELIMITER='['
+  typeset -g POWERLEVEL9K_VIRTUALENV_RIGHT_DELIMITER=']'
+
   # Custom icon.
-  # typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
+   #typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION=''
 
   #####################[ anaconda: conda environment (https://conda.io/) ]######################
   # Anaconda environment color.
@@ -1367,13 +1370,24 @@ justip
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
   }
 
-   function prompt_justip() {
-     local ip=$(/usr/sbin/ifconfig 'eth0' | grep -m1 -i inet  | awk '{print $2}')
-     if [[ ! -z "$ip" ]]; then
-         p10k segment -f 208 -i '' -t $ip
-      fi
 
-  }
+
+ function prompt_justip() {
+         local htbip=$(/usr/sbin/ifconfig 'tun0' 2>/dev/null | grep -m1 -i inet | awk '{print $2}')
+         local localip=$(/usr/sbin/ifconfig 'eth0' | grep -m1 -i inet | awk '{print $2}')
+          if [[ -n ${htbip} ]]; then
+                 p10k segment  -i '' -f '#9fef00' -t $htbip;
+          elif [[ -n ${localip} ]]; then
+                 p10k segment  -i 'ﳤ' -f '#f2ff00' -t $localip;
+          fi
+
+          #p10k segment -f 208 -i '' -t $viewi
+
+
+   }
+
+
+
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
